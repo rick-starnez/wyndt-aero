@@ -1,218 +1,406 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[codz]
-*$py.class
+Articulo windtunnel
 
-# C extensions
-*.so
+Ah, ya veo exactamente el problema. **GitHub está interpretando los como texto, no como bloques de código.** Eso pasa porque losbash están quedando separados de su contenido (los backticks se pegan como texto por el editor de GitHub web).
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+Vamos a solucionarlo de una manera diferente: editar el README directamente en tu Mac y subirlo con Git. Es mucho más robusto.
+🎯 El plan
 
-# PyInstaller
-#   Usually these files are written by a python script from a template
-#   before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+    Crear el archivo README.md localmente en tu Mac (con un editor de texto)
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+    Crear el requirements.txt
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py.cover
-.hypothesis/
-.pytest_cache/
-cover/
+    Crear el LICENSE (MIT)
 
-# Translations
-*.mo
-*.pot
+    Subir todo con Git (con los comandos correctos)
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+Al hacerlo localmente, los bloques ``` se pegarán perfectamente porque no dependemos del editor de GitHub web.
+📋 Paso 1: Crear el README localmente
 
-# Flask stuff:
-instance/
-.webassets-cache
+Abre una terminal en tu Mac y sigue estos pasos:
+1.1 Ir al directorio del proyecto
+bash
 
-# Scrapy stuff:
-.scrapy
+cd /Users/maxx/Python/WindTunnel2
 
-# Sphinx documentation
-docs/_build/
+1.2 Crear el archivo README.md
 
-# PyBuilder
-.pybuilder/
-target/
+Voy a darte el contenido del README en un archivo que puedas descargar. Pero como no puedo subir archivos directamente, te doy dos opciones:
 
-# Jupyter Notebook
-.ipynb_checkpoints
+Opción A (recomendada): Usar nano o vim para pegarlo
+bash
 
-# IPython
-profile_default/
-ipython_config.py
+nano README.md
 
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
+Se abre el editor. Pega el README completo (el que te di antes, con los ```bash incluidos). Guarda con Ctrl+O, Enter, y sal con Ctrl+X.
 
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-# Pipfile.lock
+Opción B: Usar un heredoc (más rápido si el texto no tiene caracteres especiales)
+bash
 
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-# uv.lock
+cat > README.md << 'EOF'
+[pega aquí el README completo]
+EOF
 
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-# poetry.lock
-# poetry.toml
+Opción C: Usar VS Code o cualquier editor
+bash
 
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#   pdm recommends including project-wide configuration in pdm.toml, but excluding .pdm-python.
-#   https://pdm-project.org/en/latest/usage/project/#working-with-version-control
-# pdm.lock
-# pdm.toml
-.pdm-python
-.pdm-build/
+code README.md
 
-# pixi
-#   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
-# pixi.lock
-#   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one
-#   in the .venv directory. It is recommended not to include this directory in version control.
-.pixi
+Y pegas el contenido, guardas.
+📋 Paso 2: Crear el requirements.txt
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
+Este es el archivo que le dice a otros qué instalar. Cópialo tal cual:
+text
 
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
+numpy>=1.24.0
+scipy>=1.10.0
+numba>=0.57.0
+pyvista>=0.42.0
+pyvistaqt>=0.11.0
+PyQt6>=6.5.0
+matplotlib>=3.7.0
 
-# Redis
-*.rdb
-*.aof
-*.pid
+Para crearlo:
+bash
 
-# RabbitMQ
-mnesia/
-rabbitmq/
-rabbitmq-data/
+nano requirements.txt
 
-# ActiveMQ
-activemq-data/
+Pega el contenido, guarda.
+📋 Paso 3: Crear el LICENSE (MIT)
+bash
 
-# SageMath parsed files
-*.sage.py
+nano LICENSE
 
-# Environments
-.env
-.envrc
-.venv
-env/
+Pega lo siguiente:
+text
+
+MIT License
+
+Copyright (c) 2026 Ricardo Francisco Martinez Gonzalez
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Guarda.
+📋 Paso 4: Preparar Git
+4.1 Verificar que Git está instalado
+bash
+
+git --version
+
+Debería mostrar algo como git version 2.x.x.
+4.2 Configurar Git (si no lo has hecho)
+bash
+
+git config --global user.name "Ricardo Francisco Martinez Gonzalez"
+git config --global user.email "rick.starnez@gmail.com"
+
+4.3 Inicializar el repositorio local
+bash
+
+cd /Users/maxx/Python/WindTunnel2
+git init
+
+4.4 Conectar con GitHub
+bash
+
+git remote add origin https://github.com/rick-starnez/wyndt-aero.git
+
+4.5 Verificar la conexión
+bash
+
+git remote -v
+
+Debería mostrar:
+text
+
+origin  https://github.com/rick-starnez/wyndt-aero.git (fetch)
+origin  https://github.com/rick-starnez/wyndt-aero.git (push)
+
+📋 Paso 5: Preparar el .gitignore
+
+Antes de subir, hay que excluir archivos que no deben ir a GitHub (venv, caché, etc.).
+bash
+
+nano .gitignore
+
+Pega:
+text
+
+# Virtual environments
 venv/
-ENV/
-env.bak/
-venv.bak/
+.venv/
+env/
 
-# Spyder project settings
-.spyderproject
-.spyproject
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
 
-# Rope project settings
-.ropeproject
+# Jupyter
+.ipynb_checkpoints/
 
-# mkdocs documentation
-/site
+# IDE
+.vscode/
+.idea/
+*.swp
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+# macOS
+.DS_Store
 
-# Pyre type checker
-.pyre/
+# Project-specific
+*.png
+!figure_*.png
+benchmark_results.csv
 
-# pytype static type analyzer
-.pytype/
+Guarda.
+📋 Paso 6: Subir todo a GitHub
+6.1 Ver qué archivos se van a subir
+bash
 
-# Cython debug symbols
-cython_debug/
+git status
 
-# PyCharm
-#   JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#   be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#   and can be added to the global gitignore or merged into this file.  For a more nuclear
-#   option (not recommended) you can uncomment the following to ignore the entire idea folder.
-# .idea/
+Deberías ver los archivos nuevos (README, requirements, LICENSE, .gitignore, y el código del proyecto).
+6.2 Añadir todos los archivos
+bash
 
-# Abstra
-#   Abstra is an AI-powered process automation framework.
-#   Ignore directories containing user credentials, local state, and settings.
-#   Learn more at https://abstra.io/docs
-.abstra/
+git add .
 
-# Visual Studio Code
-#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
-#   that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#   and can be added to the global gitignore or merged into this file. However, if you prefer, 
-#   you could uncomment the following to ignore the entire vscode folder
-# .vscode/
-# Temporary file for partial code execution
-tempCodeRunnerFile.py
+6.3 Verificar qué se añadió
+bash
 
-# Ruff stuff:
-.ruff_cache/
+git status
 
-# PyPI configuration file
-.pypirc
+Debería mostrar todos los archivos en verde (staged).
+6.4 Hacer el primer commit
+bash
 
-# Marimo
-marimo/_static/
-marimo/_lsp/
-__marimo__/
+git commit -m "Initial commit: WyndT v0.1.0-beta"
 
-# Streamlit
-.streamlit/secrets.toml
+6.5 Renombrar la rama a main (GitHub usa main por defecto)
+bash
+
+git branch -M main
+
+6.6 Subir a GitHub
+bash
+
+git push -u origin main
+
+Nota: la primera vez te pedirá autenticación. GitHub ya no acepta contraseñas para Git, así que necesitas un Personal Access Token. Te lo explico si es necesario.
+🎯 Resumen del flujo completo
+
+Resumiendo los comandos en orden:
+bash
+
+cd /Users/maxx/Python/WindTunnel2
+
+# Crear README.md, requirements.txt, LICENSE, .gitignore (con nano)
+
+# Configurar Git (una vez)
+git config --global user.name "Ricardo Francisco Martinez Gonzalez"
+git config --global user.email "rick.starnez@gmail.com"
+
+# Inicializar y conectar
+git init
+git remote add origin https://github.com/rick-starnez/wyndt-aero.git
+
+# Añadir y subir
+git add .
+git commit -m "Initial commit: WyndT v0.1.0-beta"
+git branch -M main
+git push -u origin main
+
+🤔 Mi recomendación
+
+Vamos paso a paso. No hagas todo de una vez. Te propongo este orden:
+
+    Primero: crea el README.md, requirements.txt, LICENSE y .gitignore localmente.
+
+    Verifica: que el README se ve bien con cat README.md o abriéndolo con VS Code.
+
+    Luego: hacemos Git paso a paso.
+
+    Finalmente: subimos a GitHub.
+
+Empecemos por el paso 1: crear el README.md.
+
+¿Tienes nano, vim, o VS Code instalado en tu Mac? ¿Cuál prefieres? 🐢
+ya cheque el readme, además he ejecutado hasta el paso 4.5. Puedes revisar el archivo adjunto, y ver que tengo varios archivos adicionales en la carpeta, ademas de subcarpetas de validaciones y otras
+
+¡Excelente! Ya veo tu carpeta del proyecto. Vamos a analizarla y a ajustar el .gitignore para que subas solo lo que necesitas.
+🔍 Análisis de tu carpeta
+
+Veo que tienes muchos archivos, algunos importantes para el paper y otros que no deberían subirse. Vamos a clasificarlos:
+✅ Archivos que SÍ deben subirse
+
+Código principal:
+
+    STL07C_paneles.py (GUI)
+
+    run.py
+
+    extract_cp_to_csv.py
+
+    extract_naca_cl.py
+
+    generate_rotor_2.py
+
+    generate_synthetic_rotor.py
+
+    improve_mesh_combined.py
+
+    inspect_rotor_2.py
+
+    scale_rotor.py
+
+    test_gui_integration.py
+
+    test_rotor_comparison.py
+
+    test_sphere2.py
+
+    benchmark_solver.py
+
+    benchmark_direct_vs_gmres.py
+
+Carpetas de código:
+
+    src/ (el módulo principal)
+
+    tests/ (los tests)
+
+Configuración del repositorio:
+
+    README.md
+
+    requirements.txt
+
+    LICENSE
+
+    .gitignore
+
+Geometrías de ejemplo (útiles para el paper y para que otros prueben):
+
+    rotor_sintetico.stl (3 palas asimétrico)
+
+    rotor_2_fixed.stl (4 palas asimétrico)
+
+    sphere.stl (para validación)
+
+Datos de validación:
+
+    sphere_cp_validation_new.csv (la validación real)
+
+    naca_cl_validation.csv
+
+Figuras clave (para el paper):
+
+    figure_5_sphere_validation.png
+
+    rotor_comparison.png
+
+    diagnostic_3_blades.png
+
+❌ Archivos que NO deben subirse
+
+Archivos generados automáticamente:
+
+    __pycache__/ (caché de Python)
+
+    .DS_Store (caché de macOS)
+
+    venv/ (entorno virtual, ¡muy pesado!)
+
+    data/ (si es solo de trabajo temporal)
+
+Archivos temporales o muy específicos:
+
+    benchmark_results.csv (resultado puntual de tu máquina)
+
+    rotor_2.stl (intermedio, si no lo usas)
+
+    Veleta01a-*.stl, Veleta01a-*.png (parecen de otro proyecto)
+
+    Veleta02a-*.stl, Veleta02a-*.png (parecen de otro proyecto)
+
+    Veleta02b-*.stl, Veleta02b-*.png (parecen de otro proyecto)
+
+    Veleta03a-Body.stl, Veleta04a-Body.stl (parecen de otro proyecto)
+
+    STL07C_paneles (300926).py (parece un duplicado de respaldo)
+
+    validation/ (si es solo tu carpeta de trabajo interno)
+
+Archivos de datos viejos:
+
+    sphere_cp_validation.csv (el viejo, con los datos incorrectos)
+
+    naca_cl_validation.csv (el viejo, con los datos incorrectos)
+
+🛠 El .gitignore completo
+
+Crea el archivo .gitignore con este contenido:
+text
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Benchmark outputs (specific to this machine)
+benchmark_results.csv
+
+# Backup files
+*.bak
+*~
+STL07C_paneles (300926).py
+STL07C_paneles (*).py
+
+# Data folder (if it's only internal work)
+data/
+
+# Validation folder (if it's only internal work)
+validation/
+
+# Veleta files (belong to another project)
+Veleta*.stl
+Veleta*.png
+
+# Old validation data
+sphere_cp_validation.csv
+naca_cl_validation.csv
