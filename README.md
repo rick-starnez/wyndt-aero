@@ -38,62 +38,48 @@ Motivation
 
 Wind turbine blade design requires accurate aerodynamic analysis to maximize energy capture while minimizing structural loads. Traditional approaches face a trade-off:
 
-    BEM (Blade Element Momentum): Fast but relies on empirical corrections.
-
-    CFD (Computational Fluid Dynamics): High fidelity but computationally expensive.
+- BEM (Blade Element Momentum): Fast but relies on empirical corrections.
+- CFD (Computational Fluid Dynamics): High fidelity but computationally expensive.
 
 Panel methods offer a middle ground. WyndT addresses the gap by providing:
 
-    A robust panel method solver optimized with Numba.
-
-    An intuitive graphical user interface.
-
-    Automated diagnostics to detect problematic configurations.
+- A robust panel method solver optimized with Numba.
+- An intuitive graphical user interface.
+- Automated diagnostics to detect problematic configurations.
 
 Key Features
 
-    3D panel method solver based on constant-strength source distributions.
+## Key Features
 
-    Numba-accelerated influence matrix assembly with parallel execution.
-
-    Influence matrix caching for fast azimuthal sweeps (up to 23x speedup).
-
-    Automatic STL import with unit detection and mesh repair.
-
-    Interactive 3D visualization of pressure coefficient (Cp) distributions.
-
-    Dynamic camera that orients according to the incoming flow direction.
-
-    Rotor diagnostics module with six complementary visualizations.
-
-    Azimuthal sweep to generate Cl, Cd, L/D, and torque curves.
+- 3D panel method solver based on constant-strength source distributions.
+- Numba-accelerated influence matrix assembly with parallel execution.
+- Influence matrix caching for fast azimuthal sweeps (up to 23x speedup).
+- Automatic STL import with unit detection (mm/m) and mesh repair.
+- Interactive 3D visualization of pressure coefficient (Cp) distributions.
+- Dynamic camera that orients according to the incoming flow direction.
+- Rotor diagnostics module with six complementary visualizations.
+- Azimuthal sweep to generate Cl, Cd, L/D, and torque curves.
+- Built-in symmetry detection to identify degenerate configurations.
+- Cross-platform: tested on macOS (Apple Silicon), compatible with Linux and Windows.
 
 Installation
 Requirements
 
-    Python 3.10 or higher
-
-    Operating System: macOS, Linux, or Windows
-
-    Recommended hardware: multi-core CPU
+-Python 3.10 or higher
+- Operating System: macOS, Linux, or Windows
+- Recommended hardware: multi-core CPU 
 
 Dependencies
 
 The following Python packages are required:
 
-    numpy: Numerical arrays
-
-    scipy: Linear algebra solvers
-
-    numba: JIT compilation and parallelization
-
-    pyvista: 3D visualization
-
-    pyvistaqt: PyVista integration with Qt
-
-    pyqt6: Graphical user interface
-
-    matplotlib: 2D plotting
+- numpy: Numerical arrays
+- scipy: Linear algebra solvers
+- numba: JIT compilation and parallelization
+- pyvista: 3D visualization
+- pyvistaqt: PyVista integration with Qt
+- pyqt6: Graphical user interface
+- matplotlib: 2D plotting
 
 Installation Steps
 
@@ -138,15 +124,11 @@ python STL07C_paneles.py
 
 Then:
 
-    Click "Load Wind Turbine STL" and select your rotor geometry.
-
-    Adjust the Polar Angle (phi) if needed.
-
-    Click "Update View" to recompute the flow and update the 3D visualization.
-
-    Click "Plot Aerodynamic Curves" to run a full azimuthal sweep.
-
-    Click "Rotor Diagnostics" to generate the diagnostic plots.
+- Click "Load Wind Turbine STL" and select your rotor geometry.
+- Adjust the Polar Angle (phi) if needed.
+- Click "Update View" to recompute the flow and update the 3D visualization.
+- Click "Plot Aerodynamic Curves" to run a full azimuthal sweep.
+- Click "Rotor Diagnostics" to generate the diagnostic plots.
 
 Python API
 
@@ -179,23 +161,17 @@ The GUI is organized into two main areas:
 
 Left panel (controls):
 
-    Load Wind Turbine STL: Opens a file dialog to load the geometry.
-
-    Plot Aerodynamic Curves: Runs the azimuthal sweep.
-
-    Rotor Diagnostics: Generates 6 diagnostic plots.
-
-    Polar Angle (phi): Adjusts the flow direction.
-
-    Update View: Recomputes the flow for the current phi.
+- Load Wind Turbine STL: Opens a file dialog to load the geometry.
+- Plot Aerodynamic Curves: Runs the azimuthal sweep.
+- Rotor Diagnostics: Generates 6 diagnostic plots.
+- Polar Angle (phi): Adjusts the flow direction.
+- Update View: Recomputes the flow for the current phi.
 
 Right area (3D viewer):
 
-    Displays the pressure coefficient (Cp) distribution.
-
-    The camera orients according to the flow direction.
-
-    A color bar indicates the Cp range.
+- Displays the pressure coefficient (Cp) distribution.
+- The camera orients according to the flow direction.
+- A color bar indicates the Cp range.
 
 Python API
 
@@ -228,25 +204,18 @@ Diagnostics Module
 
 The diagnostics module generates six visualizations:
 
-    3D View of Rotor - Scatter plot of panel centroids.
-
-    Angular Distribution of Cells - Histogram of azimuthal angles.
-
-    Distribution in Z (Thickness) - Histogram of thickness.
-
-    Cp Distribution - 2D map of the pressure coefficient.
-
-    Torque per Panel - 2D map of torque contribution.
-
-    Torque per Angular Sector - Bar chart by sector.
+- 3D View of Rotor - Scatter plot of panel centroids.
+- Angular Distribution of Cells - Histogram of azimuthal angles.
+- Distribution in Z (Thickness) - Histogram of thickness.
+- Cp Distribution - 2D map of the pressure coefficient.
+- Torque per Panel - 2D map of torque contribution.
+- Torque per Angular Sector - Bar chart by sector.
 
 These visualizations help detect:
 
-    Excessive symmetry.
-
-    Torque cancellation.
-
-    Numerical artifacts.
+- Excessive symmetry.
+- Torque cancellation.
+- Numerical artifacts.
 
 Architecture
 
@@ -268,48 +237,72 @@ wyndt-aero/
     LICENSE
     README.md
 
-Performance
+## Performance
 
-Benchmarks on an Apple Mac Studio with M5 Max (18 cores, 36 GB RAM):
+Benchmarks were conducted on an Apple Mac Studio with an M5 Max chip (18 cores, 36 GB RAM), using NumPy and SciPy linked against the Accelerate framework.
 
-    STL loading: 0.22 s
+### Representative results (4-blade asymmetric rotor, 9,216 panels)
 
-    Solver initialization: 0.55 s
+| Operation | Time |
+|-----------|------|
+| STL loading | 0.22 s |
+| Solver initialization | 0.55 s |
+| Influence matrix assembly (once) | 0.83 s |
+| Single flow solve (with cached matrix) | 2.68 s |
+| Full azimuthal sweep (5° resolution, 73 points) | 196 s (~3.3 min) |
+| Full azimuthal sweep (2° resolution, 181 points) | ~8 min |
 
-    Influence matrix assembly: 0.83 s
+### Scaling with number of panels
 
-    Single flow solve: 2.68 s
+| Panels | Matrix assembly | Single solve |
+|--------|----------------|--------------|
+| 2,000 | ~1 s | ~0.5 s |
+| 4,000 | ~4 s | ~1.2 s |
+| 9,216 | ~0.8 s | ~2.7 s |
 
-    Full azimuthal sweep (18 points): 48.3 s
+Note: matrix assembly time does not scale monotonically because Numba's parallelization efficiency depends on the matrix size and available cores.
 
-Key optimizations:
+### Key optimizations
 
-    Numba parallelization across all CPU cores.
+- **Numba parallelization**: Matrix assembly uses all available CPU cores (18 threads on M5 Max).
+- **Influence matrix caching**: The matrix depends only on geometry, so it is reused across all azimuthal angles. This reduces the cost of an 18-point sweep from ~5 minutes (naive) to ~48 seconds — a speedup of about 6x.
+- **Direct solver vs. GMRES**: For dense matrices, the direct LU decomposition (Accelerate BLAS-3) is **23.6x faster** than the iterative GMRES solver (BLAS-2). Based on this benchmark, the solver is configured to always use the direct method.
 
-    Influence matrix caching reused across angles.
+## Known Limitations
 
-    Direct LU solver (23.6x faster than GMRES for dense matrices).
+WyndT is based on the incompressible, irrotational, inviscid potential flow formulation. This means:
 
-Known Limitations
+- No viscous effects: Drag predictions omit skin friction.
+- No flow separation: Lift is over-predicted beyond the stall angle.
+- Steady flow only: Transient phenomena are not captured.
+- Watertight geometry required: Non-manifold edges can cause numerical issues.
+- Source-only formulation: The solver uses constant-strength sources. This is adequate for 2D airfoils and rotor configurations, but exhibits systematic errors for fully 3D bodies such as a sphere.
 
-WyndT assumes incompressible, irrotational, inviscid flow:
+### Symmetry-induced cancellation
 
-    No viscous effects.
+A rotor with perfect rotational symmetry produces zero net lift and drag, and a constant torque independent of azimuthal angle. This is a mathematically correct result of the potential flow formulation, not a bug: the perfect rotational symmetry of the geometry causes a complete cancellation of the pressure forces when summed over all blades.
 
-    No flow separation.
+This behavior should be interpreted carefully:
 
-    Steady flow only.
+- **It does not occur in real rotors.** Manufacturing tolerances, blade wear, and natural wind turbulence always break the symmetry to some degree. A physical rotor with nominally symmetric blades will still rotate and produce variable torque.
+- **It is a valid diagnostic case.** The solver's ability to reproduce this analytically expected result is itself a form of validation.
+- **It highlights the importance of asymmetry.** Any meaningful rotor design must break rotational symmetry — through non-uniform blade spacing, different blade geometries, or asymmetric airfoil sections — to generate useful aerodynamic forces.
 
-    Watertight geometry required.
+To analyze asymmetric rotors effectively, users should ensure that:
 
-    Source-only formulation.
+1. The blade angular positions are not multiples of 360°/n, where n is the number of blades.
+2. The blades are not geometrically identical (e.g., different chord, twist, or span distributions).
+3. The simulation captures the full 360° azimuthal sweep, since the symmetric case would give a trivial result.
 
-Symmetry-induced torque cancellation
+The diagnostics module automatically detects and warns about symmetric configurations.
 
-A rotor with perfect rotational symmetry produces constant torque. This is mathematically correct but uninformative for engineering.
-Numerical artifacts
+### Numerical artifacts
 
-Local Cp values outside the physical range may appear. The diagnostics module uses percentile-based color scaling.
+Local values of Cp outside the physical range (e.g., Cp < -10) may appear even for well-conditioned meshes. These are usually numerical artifacts concentrated in regions of high curvature. The diagnostics module uses percentile-based color scaling to suppress their visual impact.
+
+### Drag sign convention
+
+The drag force is reported as a magnitude in the Cd output, since its sign depends on the direction of the freestream relative to the asymmetric rotor geometry. The signed value is retained in the solver output as `drag_signed` for diagnostic purposes. For highly asymmetric rotors, the signed drag can reverse sign at certain azimuthal angles, indicating that the rotor is pushing the flow rather than being pushed by it.
 
 ## Citation
 
