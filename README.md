@@ -5,6 +5,7 @@ A Python-based panel method tool for rapid aerodynamic analysis of wind turbine 
 https://img.shields.io/badge/Python-3.10%2B-blue.svg
 https://img.shields.io/badge/License-MIT-yellow.svg
 https://img.shields.io/badge/Status-Beta-orange.svg
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23085462.svg)](https://doi.org/10.5281/zenodo.23085462)
 
 WyndT is an open-source Python tool for preliminary aerodynamic analysis of wind turbine rotors using a 3D panel method.
 Table of Contents
