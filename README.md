@@ -310,8 +310,12 @@ A rotor with perfect rotational symmetry produces constant torque. This is mathe
 Numerical artifacts
 
 Local Cp values outside the physical range may appear. The diagnostics module uses percentile-based color scaling.
-Citation
-bibtex
+
+## Citation
+
+If you use WyndT in your research, please cite both the software and the archived version.
+
+### Software (preferred citation)
 
 @software{wyndt2026,
   title = {WyndT: A Python-based panel method tool for aerodynamic analysis of wind turbine rotors},
@@ -323,6 +327,11 @@ bibtex
   institution = {Tecnológico Nacional de México - IT de Veracruz}
 }
 
+### Repository
+
+https://github.com/rick-starnez/wyndt-aero
+
+A full paper describing the tool's architecture and validation is in preparation.
 License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
