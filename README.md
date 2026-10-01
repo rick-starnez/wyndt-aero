@@ -5,6 +5,7 @@ A Python-based panel method tool for rapid aerodynamic analysis of wind turbine 
 https://img.shields.io/badge/Python-3.10%2B-blue.svg
 https://img.shields.io/badge/License-MIT-yellow.svg
 https://img.shields.io/badge/Status-Beta-orange.svg
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23085462.svg)](https://doi.org/10.5281/zenodo.23085462)
 
 WyndT is an open-source Python tool for preliminary aerodynamic analysis of wind turbine rotors using a 3D panel method.
 Table of Contents
@@ -309,18 +310,28 @@ A rotor with perfect rotational symmetry produces constant torque. This is mathe
 Numerical artifacts
 
 Local Cp values outside the physical range may appear. The diagnostics module uses percentile-based color scaling.
-Citation
-bibtex
+
+## Citation
+
+If you use WyndT in your research, please cite both the software and the archived version.
+
+### Software (preferred citation)
 
 @software{wyndt2026,
   title = {WyndT: A Python-based panel method tool for aerodynamic analysis of wind turbine rotors},
-  author = {Martinez Gonzalez, Ricardo Francisco},
+  author = {Martínez González, Ricardo Francisco},
   year = {2026},
-  url = {https://github.com/rick-starnez/wyndt-aero},
   version = {0.1.0-beta},
-  institution = {Tecnologico Nacional de Mexico - IT de Veracruz}
+  doi = {10.5281/zenodo.23085462},
+  url = {https://doi.org/10.5281/zenodo.23085462},
+  institution = {Tecnológico Nacional de México - IT de Veracruz}
 }
 
+### Repository
+
+https://github.com/rick-starnez/wyndt-aero
+
+A full paper describing the tool's architecture and validation is in preparation.
 License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
