@@ -315,11 +315,12 @@ bibtex
 
 @software{wyndt2026,
   title = {WyndT: A Python-based panel method tool for aerodynamic analysis of wind turbine rotors},
-  author = {Martinez Gonzalez, Ricardo Francisco},
+  author = {Martínez González, Ricardo Francisco},
   year = {2026},
-  url = {https://github.com/rick-starnez/wyndt-aero},
   version = {0.1.0-beta},
-  institution = {Tecnologico Nacional de Mexico - IT de Veracruz}
+  doi = {10.5281/zenodo.23085462},
+  url = {https://doi.org/10.5281/zenodo.23085462},
+  institution = {Tecnológico Nacional de México - IT de Veracruz}
 }
 
 License
