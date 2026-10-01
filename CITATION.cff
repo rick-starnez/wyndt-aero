@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use WyndT in your research, please cite it as below."
+type: software
+title: "WyndT: A Python-based panel method tool for aerodynamic analysis of wind turbine rotors"
+version: 0.1.0-beta
+doi: 10.5281/zenodo.23085462
+date-released: 2026-09-30
+authors:
+  - family-names: "Martínez González"
+    given-names: "Ricardo Francisco"
+    affiliation: "Tecnológico Nacional de México - Instituto Tecnológico de Veracruz"
+    email: "rick.starnez@gmail.com"
+    orcid: "0000-0003-0251-6281"
+repository-code: "https://github.com/rick-starnez/wyndt-aero"
+url: "https://github.com/rick-starnez/wyndt-aero"
+license: MIT
+keywords:
+  - "panel method"
+  - "wind turbine"
+  - "aerodynamics"
+  - "potential flow"
+  - "Python"
+  - "rotor analysis"
+abstract: |
+  WyndT is an open-source Python tool for preliminary aerodynamic analysis
+  of wind turbine rotors using a 3D panel method. It provides an intuitive
+  graphical interface for loading STL geometries, visualizing pressure
+  distributions, and generating aerodynamic curves without requiring
+  specialized CFD knowledge.
